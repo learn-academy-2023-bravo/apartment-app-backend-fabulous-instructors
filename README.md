@@ -1,24 +1,34 @@
-# README
+# Apartment App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Setup
 
-Things you may want to cover:
+- `rails new apartment-app-backend -d postgresql -T`
+- `cd apartment-app-backend`
+- `rails db:create`
+- `bundle add rspec-rails`
+- `rails generate rspec:install`
 
-* Ruby version
+### Devise
 
-* System dependencies
+- `bundle add devise`
+- `rails generate devise:install`
+- `rails generate devise User`
+- `rails db:migrate`
 
-* Configuration
+### Apartments
 
-* Database creation
+- `rails g resource Apartment street:string unit:string city:string state:string square_footage:integer price:string bedrooms:integer bathrooms:float pets:string image:text user_id:integer`
+- `rails db:migrate`
 
-* Database initialization
+### Seeds
 
-* How to run the test suite
+- `rails db:seed`
 
-* Services (job queues, cache servers, search engines, etc.)
+### GitHub
 
-* Deployment instructions
-
-* ...
+- `git checkout -b main`
+- `git remote add origin https://github.com/learn-academy-2023-bravo/apartment-app-backend-<your-team>.git`
+- `git add .`
+- `git commit -m ':tada: initial commit'`
+- `git push origin main`
+- Ask for branch protection
