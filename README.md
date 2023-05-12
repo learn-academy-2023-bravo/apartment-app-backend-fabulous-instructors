@@ -45,13 +45,13 @@ Before we add the Aunthentication steps, make sure your fetch calls are working 
 
 ## What is JWT and Why Use it?
 
-- JWT stands for JSON Web Token, and it is an open standard for securely transmitting information between parties as a JSON object.
-- It is commonly used for authentication and authorization in web applications.
-- JWTs consist of three parts: the header, the payload, and the signature.
+JWT stands for JSON Web Token, and it is an open standard for securely transmitting information between parties as a JSON object. It is commonly used for authentication and authorization in web applications.
 
-- The header contains metadata about the token and the signing algorithm used.
-- The payload carries the claims, which are statements about the user or other data.
-- The signature is created by combining the encoded header, encoded payload, and a secret key using a specified algorithm.
+JWTs consist of three parts: the header, the payload, and the signature.
+
+- The header is a small JSON object that tells us what kind of algorithm should be used to encrypt and decrypt the message.
+- The payload is a JSON object that holds the actual information you want to share. You can include any data you want(i.e. name, expiration date). It is not encrypted.
+- The signature is created by combining the encoded header, encoded payload, and a secret key using a specified algorithm.  It is lock that guarantees the token's integrity and authenticity. 
 
 - When a user logs in, the server generates a JWT, signs it using a secret key, and sends it back to the client.
 - The client stores the token, typically in local storage or a cookie, and includes it in subsequent requests to the server.
@@ -149,10 +149,12 @@ end
 ```
 
 ### 6. Create .env file and Generate JWT token
-We need a secret key to create a JWT token. Generate one with this command: $`bundle exec rake secret`
-A .env file is used to store api keys and secrets. These files should not be stored on github as then anyone could hack you.<br> ***Make sure to add .env to your .gitignore!  This is very important!***
+We need a secret key to create a JWT token. Generate one with this command:<br> $`bundle exec rake secret` <br>
+A `.env` file is used to store api keys and secrets. These files should not be stored on github as then anyone could hack you.<br> 
 
-in your .env file, use the following syntax (this is convention for keys in .env files)
+***Make sure to add .env to your .gitignore!  This is very important!***
+
+in your `.env` file, use the following syntax (this is convention for keys in `.env` files)
 ```ruby
 DEVISE_JWT_SECRET_KEY=<your very long secret key here>
 ```
